@@ -1,15 +1,23 @@
 <div class="auth-container">
-  <form class="auth-form">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
     <h2>Login</h2>
     <div class="form-group">
-      <label for="login-email">Email</label>
-      <input id="login-email" type="email" required />
+      <label for="username">Username</label>
+      <input id="username" formControlName="username" type="text" />
+      <div *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
+        Username is required.
+      </div>
     </div>
+
     <div class="form-group">
-      <label for="login-password">Password</label>
-      <input id="login-password" type="password" required />
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" />
+      <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+        Password is required.
+      </div>
     </div>
-    <button type="submit" class="auth-btn">Login</button>
+
+    <button type="submit" [disabled]="loginForm.invalid" class="auth-btn">Login</button>
     <div class="auth-switch">
       <a routerLink="/register">Don't have an account? Register</a>
     </div>
