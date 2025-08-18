@@ -1,1 +1,17 @@
-<p>login works!</p>
+<div class="auth-container">
+  <form class="auth-form">
+    <h2>Login</h2>
+    <div class="form-group">
+      <label for="login-email">Email</label>
+      <input id="login-email" type="email" required />
+    </div>
+    <div class="form-group">
+      <label for="login-password">Password</label>
+      <input id="login-password" type="password" required />
+    </div>
+    <button type="submit" class="auth-btn">Login</button>
+    <div class="auth-switch">
+      <a routerLink="/register">Don't have an account? Register</a>
+    </div>
+  </form>
+</div>
