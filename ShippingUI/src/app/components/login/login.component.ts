@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
         if (res?.token) {
           this.auth.setToken(res.token);
         }
-        // navigate to home/dashboard - adjust route as needed
         this.router.navigate(['/']);
       },
       error: (err) => {

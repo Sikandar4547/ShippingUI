@@ -1,35 +1,45 @@
 <div class="auth-container">
-  <form [formGroup]="registerForm" class="auth-form">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
     <h2>Register</h2>
+    
     <div class="form-group">
-      <label for="register-username">Username</label>
-      <input id="register-username" formControlName="username" type="text" required />
+      <label for="username">Username</label>
+      <input id="username" type="text" formControlName="username" />
     </div>
+
     <div class="form-group">
-      <label for="register-email">Email</label>
-      <input id="register-email" formControlName="email" type="email" required />
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
     </div>
+
     <div class="form-group">
-      <label for="register-password">Password</label>
-      <input id="register-password" formControlName="password" type="password" required />
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" />
     </div>
+
     <div class="form-group">
-      <label for="register-firstName">First Name</label>
-      <input id="register-firstName" formControlName="firstName" type="text" required />
+      <label for="firstName">First Name</label>
+      <input id="firstName" type="text" formControlName="firstName" />
     </div>
+
     <div class="form-group">
-      <label for="register-lastName">Last Name</label>
-      <input id="register-lastName" formControlName="lastName" type="text" required />
+      <label for="lastName">Last Name</label>
+      <input id="lastName" type="text" formControlName="lastName" />
     </div>
+
     <div class="form-group">
-      <label for="register-roleName">Role Name</label>
-      <input id="register-roleName" formControlName="roleName" type="text" required />
+      <label for="dateOfBirth">Date of Birth</label>
+      <input id="dateOfBirth" type="date" formControlName="dateOfBirth" />
     </div>
-    <div class="form-group">
-      <label for="register-dateOfBirth">Date of Birth</label>
-      <input id="register-dateOfBirth" formControlName="dateOfBirth" type="date" required />
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
     </div>
-    <button type="submit" class="auth-btn">Register</button>
+
+    <button type="submit" class="auth-btn" [disabled]="isLoading">
+      {{ isLoading ? 'Registering...' : 'Register' }}
+    </button>
+
     <div class="auth-switch">
       <a routerLink="/login">Already have an account? Login</a>
     </div>

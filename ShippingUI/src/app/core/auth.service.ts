@@ -28,17 +28,16 @@ export interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  // use environment.apiBaseUrl so the URL can be switched per build environment
-  private baseUrl = `${environment.apiBaseUrl}/api/auth`;
+  private baseUrl = `${environment.apiBaseUrl}`;
 
   constructor(private http: HttpClient) {}
 
   login(payload: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/login`, payload);
+    return this.http.post<AuthResponse>(`${this.baseUrl}login`, payload);
   }
 
   register(payload: RegisterRequest): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/register`, payload);
+    return this.http.post<any>(`${this.baseUrl}register`, payload);
   }
 
   setToken(token: string): void {
